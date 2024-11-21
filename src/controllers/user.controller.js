@@ -1,6 +1,6 @@
 import {asyncHandler} from '../utils/asyncHandler.js'
 import {ApiError} from "../utils/ApiError.js"
-import {User} from "../models/users.model.js"
+import {User} from "../models/user.model.js"
 import {uploaderOnCloudinary} from "../utils/cloudinary.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import jwt from "jsonwebtoken"
@@ -272,7 +272,7 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
 
     //TODO: delete old image - assignment
 
-    const avatar = await uploadOnCloudinary(avatarLocalPath)
+    const avatar = await uploaderOnCloudinary(avatarLocalPath)
 
     if (!avatar.url) {
         throw new ApiError(400, "Error while uploading on avatar")
